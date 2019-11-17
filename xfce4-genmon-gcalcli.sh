@@ -24,7 +24,8 @@ ExtraDays=5
 UpdateMins=60
 
 # Color of current date
-TodayColor="#ff0000"
+TodayForegroundColor="#4B4B3B"
+TodayBackgroundColor="#FAFBFC"
 
 
 #
@@ -44,6 +45,11 @@ fi
 
 # if tempfile is older than the update time, trigger refresh
 if [ `stat --format=%Y $CalFile` -le $(( `date +%s` - ( $UpdateMins * 60 ))) ]; then
+    Refresh=TRUE
+fi
+
+# if the tempfile is less than 10 bytes, trigger refresh
+if [ $(stat -c%s $CalFile) -lt 10 ];then
     Refresh=TRUE
 fi
 
@@ -78,7 +84,7 @@ echo "<tool><span font_family='monospace'>"
 
 # show the calendar (with custom color for today's date)
 Today=$(date +%d)
-echo -ne "$(cal -n $Month)" | sed "s/ $Today / <span weight=\"Bold\" fgcolor=\"$TodayColor\">$Today<\/span> /"
+echo -ne "$(cal -n $Month)" | sed "s/ $Today / <span bgcolor=\"$TodayBackgroundColor\" fgcolor=\"$TodayForegroundColor\">$Today<\/span> /"
 
 # show the agenda (cut depending on how many months we show
 if [ "$Month" -eq 1 ];then
