@@ -84,7 +84,13 @@ echo "<tool><span font_family='monospace'>"
 
 # show the calendar (with custom color for today's date)
 Today=$(date +%d)
-echo -ne "$(cal -n $Month)" | sed "s/$Today/<span bgcolor=\"$TodayBackgroundColor\" fgcolor=\"$TodayForegroundColor\">$Today<\/span>/"
+Calendar=$(cal -n $Month)
+
+IFS=''
+while read line; do
+    echo -n $(echo -n $line | cut -c 1-20 | sed "s/$Today/<span bgcolor=\"$TodayBackgroundColor\" fgcolor=\"$TodayForegroundColor\">$Today<\/span>/") 
+    echo $(echo -n $line | cut -c 21-100)
+done <<< "$Calendar"
 
 # show the agenda (cut depending on how many months we show
 if [ "$Month" -eq 1 ];then
