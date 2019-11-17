@@ -88,9 +88,12 @@ Calendar=$(cal -n $Month)
 
 IFS=''
 while read line; do
-    echo -n $(echo -n $line | cut -c 1-20 | sed "s/$Today/<span bgcolor=\"$TodayBackgroundColor\" fgcolor=\"$TodayForegroundColor\">$Today<\/span>/") 
-    echo $(echo -n $line | cut -c 21-100)
+    NewCal+=$(echo -n $line | cut -c 1-20 | sed "s/$Today/<span bgcolor=\"$TodayBackgroundColor\" fgcolor=\"$TodayForegroundColor\">$Today<\/span>/") 
+    NewCal+=$(echo -n $line | cut -c 21-100)
+    NewCal+='\n'
 done <<< "$Calendar"
+
+echo -ne ${NewCal::-2}
 
 # show the agenda (cut depending on how many months we show
 if [ "$Month" -eq 1 ];then
