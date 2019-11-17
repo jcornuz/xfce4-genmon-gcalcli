@@ -10,4 +10,13 @@ to give you a clock in your Xfce4 panel which loads your calendar program on cli
 
 It is minimally configurable: how many months do you want to show, how many days of appointments and the color of the current date \o/
 
+### How to go about it:
+
+- Make sure gcalcli works as expected
+- Download xfce4-genmon-gcalcli.sh make it executable (chmod 755)
+- If you want, edit xfce4-genmon-gcalcli.sh for the options you want
+- Point xfce4-genmon to xfce4-genmon-gcalcli.sh
+
+Here is what it should look like:
+
 ![screenshot](./xfce4-genmon-gcalcli.png)
