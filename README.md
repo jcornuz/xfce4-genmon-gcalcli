@@ -8,3 +8,6 @@ And gcalcli: https://github.com/insanum/gcalcli
 
 to give you a clock in your Xfce4 panel which loads your calendar program on click. It also shows a tooltip with the current month(s) as weel as your next appointment(s) in your gmail calendars.
 
+It is minimally configurable: how many months do you want to show, how many days of appointments and the color of the current date \o/
+
+www.isconsult.ca/tmp/genmon.png
